@@ -1,0 +1,50 @@
+<div class="container" [style.textAlign]="'center'" [style.padding.px]="10">
+  <div class="card">
+    <div>
+      <img src="../../assets/ctsw_logo.png" height="37" alt="CodingTheSmartWay.com" [style.marginTop]="'20px'" />
+    </div>
+    <div class="card-body">
+      <div *ngIf="!hasVoted && !updating">
+        <h2>Which is your favorite frontend framework?</h2>
+        <h4>Click on the logos below to vote!</h4>
+        <br>
+        <div class="row">
+          <div class="offset-md-3 col-md-2">
+            <img src="../../assets/angular_logo.png" height="96" alt="Angular" (click)="vote('angularVoteCount')">
+          </div>
+          <div class="col-md-2">
+            <img src="../../assets/react_logo.png" height="96" alt="React" (click)="vote('reactVoteCount')">
+          </div>
+          <div class="col-md-2">
+            <img src="../../assets/vuejs_logo.png" height="96" alt="Vue.js" (click)="vote('vueVoteCount')">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="updating">
+        <h3>Thanks. Redirecting to voting results ...</h3>
+      </div>
+      <div *ngIf="hasVoted" [style.textAlign]="'left'">
+        <span class="badge badge-pill badge-danger mb-1">
+          Angular: {{angularVoteCount}} ( {{angularVotePercent}} %)
+        </span>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" [style.width.%]="angularVotePercent"></div>
+        </div>
+        <br><br>
+        <span class="badge badge-pill badge-info mb-1">
+          React: {{reactVoteCount}} ( {{reactVotePercent}} %)
+        </span>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-info" role="progressbar" [style.width.%]="reactVotePercent"></div>
+        </div>
+        <br><br>
+        <span class="badge badge-pill badge-success mb-1">
+          Vue.js: {{vueVoteCount}} ( {{vueVotePercent}} %)
+        </span>
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width.%]="vueVotePercent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
